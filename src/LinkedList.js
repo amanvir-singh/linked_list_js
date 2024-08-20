@@ -42,5 +42,17 @@ class LinkedList {
         }
         this.length++;
         return this;
+    }
+    
+    removeAt(position) {
+        if (position < 0 || position >= this.length) return undefined;
+        if (position === 0) return this.shift();
+        if (position === this.length - 1) return this.pop();
+    
+        const previousNode = this.get(position - 1);
+        const removed = previousNode.next;
+        previousNode.next = removed.next;
+        this.length--;
+        return removed;
       }
 }
