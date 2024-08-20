@@ -80,5 +80,16 @@ class LinkedList {
         previousNode.next = newNode;
         this.length++;
         return true;
+    }
+    
+    get(position) {
+        if (position < 0 || position >= this.length) return null;
+        let current = this.head;
+        for (let i = 0; i < position; i++) {
+          current = current.next;
+        }
+        return current;
       }
-}
+    
+};
+module.exports = LinkedList;
