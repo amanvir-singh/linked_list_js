@@ -43,7 +43,7 @@ class LinkedList {
         this.length++;
         return this;
     }
-    
+
     removeAt(position) {
         if (position < 0 || position >= this.length) return undefined;
         if (position === 0) return this.shift();
@@ -54,5 +54,18 @@ class LinkedList {
         previousNode.next = removed.next;
         this.length--;
         return removed;
+    }
+    
+    insertAt(value, position) {
+        if (position < 0 || position > this.length) return false;
+        if (position === 0) return !!this.prepend(value);
+        if (position === this.length) return !!this.append(value);
+    
+        const newNode = new Node(value);
+        const previousNode = this.get(position - 1);
+        newNode.next = previousNode.next;
+        previousNode.next = newNode;
+        this.length++;
+        return true;
       }
 }
